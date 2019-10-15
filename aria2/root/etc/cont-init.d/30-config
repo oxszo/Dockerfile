@@ -1,0 +1,48 @@
+#!/usr/bin/with-contenv bash
+
+# make folders
+mkdir -p \
+	/config/ssl
+
+# copy
+if [[ ! -e /config/aria2.conf ]]
+then
+  cp /aria2/aria2.conf.default /config/aria2.conf
+fi
+
+if [[ ! -e /config/aria2.session ]]
+then
+  touch /config/aria2.session
+fi
+
+if [[ ! -e /config/autoremove.sh ]]
+then
+  cp /aria2/autoremove.sh /config/autoremove.sh
+fi
+
+if [[ ! -e /config/aria2_delete.sh ]]
+then
+  cp /aria2/aria2_delete.sh /config/aria2_delete.sh
+fi
+
+if [[ ! -e /config/dht.dat ]]
+then
+  touch /config/dht.dat
+fi
+
+#ipv6dht
+if [[ ! -e /config/dht6.dat ]]
+then
+  touch /config/dht6.dat
+fi
+
+if [ `grep -c "disable-ipv6=true" /config/aria2.conf` -eq '0' ];then
+  echo "ipv6 is enable now"
+else
+  echo "ipv6 is disable now" && rm -rf /config/dht6.dat
+fi
+
+# permissions
+chown -R abc:abc /config
+chown -R abc:abc /downloads
+chmod +x /config/*.sh
