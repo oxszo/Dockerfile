@@ -42,6 +42,18 @@ else
   echo "ipv6 is disable now" && rm -rf /config/dht6.dat
 fi
 
+#update tracker
+list=`wget -qO- https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt|awk NF|sed ":a;N;s/\n/,/g;ta"`
+sed -i '$a bt-tracker='${list} /config/aria2.conf
+cp /aria2/tracker /etc/periodic/daily/tracker
+echo 'the trackers has been uptaded.'
+
+#tracker rpc cornd
+chmod 777 /etc/periodic/daily/tracker
+sed -i "4s/oxszo/$SECRET/" /etc/periodic/daily/tracker
+crond
+echo 'crond start successfully'
+
 # permissions
 chown -R abc:abc /config
 chown -R abc:abc /downloads
