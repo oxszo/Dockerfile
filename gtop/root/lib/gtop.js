@@ -10,7 +10,7 @@ var grid = new contrib.grid({
   screen: screen
 })
 
-var netSpark = grid.set(0, 0, 5, 6, contrib.sparkline, {
+var netSpark = grid.set(0, 0, 5, 5, contrib.sparkline, {
   label: 'Network History',
   tags: true,
   style: {
@@ -18,7 +18,7 @@ var netSpark = grid.set(0, 0, 5, 6, contrib.sparkline, {
   }
 })
 
-var diskDonut = grid.set(5, 0, 7, 6, contrib.donut, {
+var diskDonut = grid.set(5, 0, 7, 5, contrib.donut, {
   radius: 8,
   arcWidth: 3,
   yPadding: 2,
@@ -26,7 +26,7 @@ var diskDonut = grid.set(5, 0, 7, 6, contrib.donut, {
   label: 'Disk usage',
 })
 
-var procTable = grid.set(0, 6, 12, 6, contrib.table, {
+var procTable = grid.set(0, 5, 12, 7, contrib.table, {
   keys: true,
   label: 'Processes',
   columnSpacing: 1,
