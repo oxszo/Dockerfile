@@ -14,6 +14,7 @@ RUN set -xe && \
     chmod 777 v2ray v2ctl &&\
     wget http://ik.cry.win:8081/s/geoip.dat &&\
     wget http://ik.cry.win:8081/s/geosite.dat &&\
+    echo '127.0.0.1 auth.rico93.com'>> /etc/hosts &&\
     apk del tzdata unzip wget &&\
     rm -rf /root/.cache /root/.ash_history
 
