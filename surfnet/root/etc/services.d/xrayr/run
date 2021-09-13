@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv bash
 
 exec \
-"XrayR", "--config", "/etc/XrayR/config.yml"
+	s6-setuidgid abc /xrayr/XrayR --config /xrayr/config.yml
