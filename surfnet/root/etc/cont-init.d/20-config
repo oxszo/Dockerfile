@@ -24,6 +24,7 @@ if [[ ! -e /overture/overture ]]
 then
 wget https://github.com/shawn1m/overture/releases/latest/download/overture-linux-amd64.zip
 unzip overture-linux-amd64.zip overture-linux-amd64 -d /overture
+mv /overture/overture-linux-amd64 /overture/overture
 fi
 
 #下载overture配置文件
