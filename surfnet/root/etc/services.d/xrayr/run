@@ -1,1 +1,4 @@
+#!/usr/bin/with-contenv bash
 
+exec \
+"XrayR", "--config", "/etc/XrayR/config.yml"
