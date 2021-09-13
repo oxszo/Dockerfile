@@ -6,5 +6,5 @@ chown -R abc:abc \
 	/overture
   
 chmod a+x \
-  /xrayr/xrayr \
+  /xrayr/XrayR \
   /overture/overture
