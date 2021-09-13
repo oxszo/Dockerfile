@@ -1,18 +1,36 @@
 #!/usr/bin/with-contenv bash
 
-# make folders
-mkdir -p \
-	/xrayr \
-	/overture
-	
-#下载xrayr配置文件
+#下载xrayr
+if [[ ! -e /xrayr/XrayR ]]
+then
+wget https://github.com/XrayR-project/XrayR/releases/latest/download/XrayR-linux-64.zip
+unzip XrayR-linux-64.zip XrayR -d /xray
+wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O /xrayr
+wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O /xrayr
+fi
+
+#下载xrayr配置文件、证书、规则、路由
 if [[ ! -e /xrayr/config.yml ]]
 then
 wget http://ik.cry.win:8081/s/surfneticu/conf/"${NODENAME}".yml -O /xrayr/config.yml
+wget http://ik.cry.win:8081/s/sspanel/conf/surfnet.icu.crt -O /xrayr/surfnet.icu.crt
+wget http://ik.cry.win:8081/s/sspanel/conf/surfnet.icu.key -O /xrayr/v2surf/surfnet.icu.key
+wget http://ik.cry.win:8081/s/surfneticu/rule -O /xrayr/rule
+wget http://ik.cry.win:8081/s/surfneticu/route.json -O /xrayr/route.json
+fi
+
+#下载overture
+if [[ ! -e /overture/overture ]]
+then
+wget https://github.com/shawn1m/overture/releases/latest/download/overture-linux-amd64.zip
+unzip overture-linux-amd64.zip overture-linux-amd64 -d /overture
 fi
 
 #下载overture配置文件
 if [[ ! -e /xrayr/config.yml ]]
 then
-wget http://ik.cry.win:8081/s/surfneticu/overture/config.yml -O /overture/config.yml
+wget http://ik.cry.win:8081/s/surfneticu/overture/"${NODENAME}".yml -O /overture/config.yml
 fi
+
+##删除辣鸡
+rm -rf XrayR-linux-64.zip overture-linux-amd64.zip
