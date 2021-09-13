@@ -1,5 +1,18 @@
 #!/usr/bin/with-contenv bash
-# permissions
-chown -R abc:abc \
+
+# make folders
+mkdir -p \
 	/xrayr \
-  /overture
+	/overture
+	
+#下载xrayr配置文件
+if [[ ! -e /xrayr/config.yml ]]
+then
+wget http://ik.cry.win:8081/s/surfneticu/conf/"${NODENAME}".yml -O /xrayr/config.yml
+fi
+
+#下载overture配置文件
+if [[ ! -e /xrayr/config.yml ]]
+then
+wget http://ik.cry.win:8081/s/surfneticu/overture/config.yml -O /overture/config.yml
+fi
